@@ -1,0 +1,144 @@
+.lightbox{
+    position: fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height: 100%;
+   // background-color:#fff;
+    background: rgba(#FFF, 0.9);
+}
+.lightbox__image{
+    position:fixed;
+}
+
+.lightbox__close {
+    position: fixed;
+    top: 80px;
+    right: 20px;
+    width: 48px;
+    height: 36px;
+    border: solid 2px;
+    border-color: brown;
+    background-image: url(https://docs.google.com/drawings/d/e/2PACX-1vQ01G3IW5N3tmceI8oz7G5egLDUzLIP02WhXlXxEW6_fjULC5eDRi0q6C209UjhtQfl6sH0zeTfhcuF/pub?w=480&h=360);//transparent
+     /*background-image: url(./assets/firefoxIcon.jpg); marche pas en local*/ 
+    /*no-repeat;*/
+    background-size: cover;
+    transition: transform 0.3s;
+    cursor:pointer;
+}
+.lightbox__btn {
+position: fixed;
+top: 50%;
+width: 48px;
+height: 36px;
+margin-top:-40px;
+background-color: transparent;
+background-size: cover;
+border: solid 2px;
+border-color: brown;
+transition: transform 0.3s;
+cursor:pointer;
+}
+.lightbox__close:hover .lightbox__btn:hover  {
+
+&:hover {
+        transform:scale(1.2);
+    }
+}
+.lightbox__prev {
+    left: 20px;
+    background-image: url(https://docs.google.com/drawings/d/e/2PACX-1vT49aaeGqtbB0lsf3sBqrlfv8oN37Gmn82e14SQIWF7IQ13w-hz66n4ofOvCyDrSjeY2u90JjF_Gik8/pub?w=480&h=360);
+     /*background-image: url(./assets/firefoxIcon.jpg); marche pas en local*/ 
+    /*no-repeat;*/
+}
+.lightbox__next {
+    right: 20px;
+     background-image: url(https://docs.google.com/drawings/d/e/2PACX-1vR6LWV9Qf-AF4Wf9f00pO1CQkCx62yMFpPOCZQ7ZgOil1j6U4FI4nSHy_juE4CY19Rt3uUD08qs55FD/pub?w=480&h=360);
+     /*background-image: url(./assets/firefoxIcon.jpg); marche pas en local*/ 
+    /*no-repeat;*/
+ }
+.lightbox__loading {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 40px;
+    height: 40px;
+    padding: 10px;
+    margin-left: -20px;
+    margin-top: -20px;
+    background-color:#444;
+    background-color: rgba(#000,0.5);
+    border-radius: 40px;
+    &::after { //pseudo element: nouvel élément 
+        content: "....";//marche pas si je le laisse à vide
+        width: 20px;
+        height: 20px;
+        background-color: #fff;
+        border-radius: 20px;
+        animation: lightbox-loading .5s ease infinite;
+    }
+}
+.lighbox-fade-enter-active, .lighbox-fade-leave-active{
+    transition: opacity 0.9s;
+
+}
+.lighbox-fade-enter, .lighbox-fade-leave-active{
+    opacity: 0;
+}
+//Next
+.lightbox-next-enter-active, .lightbox-next-leave-active  {
+position: fixed;
+width: 100%;
+height: 100%;
+top: 0;
+left:0;
+opacity: 1;    
+transition:transform .5s, opacity .5s
+}
+.lightbox-next-enter-active {
+    transition-delay: .5s;
+}
+.lightbox-next-enter {
+    opacity: 0;
+    transform:translateX(100px);
+}
+.lightbox-next-leave-active {
+    opacity: 0;
+    transform:translateX(-100px);
+}
+//Prev
+.lightbox-prev-enter-active, .lightbox-prev-leave-active  {
+position: fixed;
+width: 100%;
+height: 100%;
+top: 0;
+left:0;
+opacity: 1;    
+transition:transform .5s, opacity .5s
+}
+.lightbox-prev-enter-active {
+    transition-delay: .5s;
+}
+.lightbox-prev-enter {
+    opacity: 0;
+    transform:translateX(-100px);
+}
+.lightbox-prev-leave-active {
+    opacity: 0;
+    transform:translateX(100px);
+}
+
+@keyframes lightbox-loading {
+    0% {
+        opacity: 0.5;
+        transform: scale(0.75);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0.5;
+        transform: scale(0.75);
+    }
+}
